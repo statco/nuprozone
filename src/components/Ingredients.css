@@ -1,0 +1,48 @@
+.ingredients { background: var(--forest); color: var(--cream); }
+.ingredients .eyebrow { color: var(--orange-light); }
+.ingredients .section-headline { color: var(--white); }
+.ingredients .body-lg { color: rgba(249,245,238,0.7); }
+
+.ingredients__header {
+  max-width: 600px;
+  margin-bottom: 60px;
+}
+
+.ingredients__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2px;
+}
+
+.ingredient-card {
+  display: flex;
+  gap: 24px;
+  padding: 32px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.2s;
+}
+.ingredient-card:hover { background: rgba(255,255,255,0.08); }
+
+.ingredient-card__num {
+  font-family: var(--font-display);
+  font-size: 40px;
+  color: var(--orange);
+  opacity: 0.35;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 48px;
+}
+
+.ingredient-card__name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+
+.ingredient-card__desc {
+  font-size: 15px;
+  color: rgba(249,245,238,0.65);
+  line-height: 1.65;
+}

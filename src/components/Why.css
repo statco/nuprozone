@@ -1,0 +1,41 @@
+.why { background: var(--cream-dark); }
+.why__header { max-width: 560px; margin-bottom: 56px; }
+
+.why__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin-bottom: 56px;
+}
+
+.why-card {
+  background: var(--white);
+  padding: 32px 28px;
+  border-radius: var(--radius-lg);
+  border: 1px solid transparent;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.why-card:hover { border-color: var(--orange); transform: translateY(-4px); }
+
+.why-card__icon {
+  color: var(--orange);
+  margin-bottom: 20px;
+}
+
+.why-card__title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--forest);
+  margin-bottom: 12px;
+}
+
+.why-card__desc {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.why__cta-row {
+  display: flex;
+  justify-content: center;
+}
