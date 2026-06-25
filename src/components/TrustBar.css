@@ -1,0 +1,30 @@
+.trust-bar {
+  background: var(--forest);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(24px, 4vw, 64px);
+  padding: 24px clamp(20px, 5vw, 60px);
+  flex-wrap: wrap;
+}
+
+.trust-bar__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--cream);
+}
+
+.trust-bar__icon {
+  color: var(--orange-light);
+  display: flex;
+  align-items: center;
+}
+
+.trust-bar__label {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
