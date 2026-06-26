@@ -9,7 +9,7 @@ export const translations = {
       lang: "FR"
     },
     hero: {
-      eyebrow: "Handcrafted in North America",
+      eyebrow: "Handcrafted in the USA",
       headline: "Pure Goat's Milk Soap",
       subhead: "Wholesale & Export Ready",
       body: "Premium handmade soap bars crafted with fresh goat's milk, organic oils, and pure essential oils. Available in bulk for retailers, spas, and wellness brands worldwide.",
@@ -25,7 +25,7 @@ export const translations = {
     about: {
       eyebrow: "Our Story",
       headline: "Made with care. Crafted for skin.",
-      body1: "NUPROZ goat's milk soap is handcrafted in North America using fresh goat's milk. Every bar is cold-process made, loaded with skin-nourishing fats, lactic acids, and vitamins that gently cleanse without stripping.",
+      body1: "NUPROZ goat's milk soap is handcrafted in the USA using fresh goat's milk. Every bar is cold-process made, loaded with skin-nourishing fats, lactic acids, and vitamins that gently cleanse without stripping.",
       body2: "We supply wholesale buyers who demand quality their customers can feel — spas, natural health retailers, gift shops, and wellness brands across North America and beyond.",
       stat1: "100%",
       stat1label: "Natural Ingredients",
@@ -49,15 +49,29 @@ export const translations = {
     products: {
       eyebrow: "Product Line",
       headline: "Current SKUs — Wholesale Catalogue",
-      body: "Pricing, MOQs, and custom label options are available upon inquiry. New variants added seasonally.",
-      coming: "Full product catalogue with pricing available upon inquiry — including private label options.",
-      cta: "Request Catalogue"
+      body: "Pricing and MOQs are available upon inquiry. New variants added seasonally.",
+      coming: "Full product catalogue with pricing available upon inquiry.",
+      cta: "Request Catalogue",
+      specs: {
+        format: "Format",
+        formatVal: "4 oz bar · 113g",
+        process: "Process",
+        processVal: "Cold-process",
+        origin: "Origin",
+        originVal: "USA",
+        label: "Label",
+        labelVal: "NUPROZ branded",
+        certifications: "Certifications",
+        certificationsVal: "Cruelty-free · Sensitive skin",
+        pricing: "Pricing",
+        pricingVal: "Available upon inquiry"
+      }
     },
     why: {
       eyebrow: "Why NUPROZ",
       headline: "Built for buyers who care about what they sell.",
       items: [
-        { title: "Private Label Ready", desc: "Custom labelling available for retailers and spa brands wanting their own identity." },
+        { title: "NUPROZ Branded", desc: "All products ship under the NUPROZ brand — a name built on quality, care, and clean ingredients." },
         { title: "Export Packaging", desc: "Bars individually wrapped and export-compliant for North America and international markets." },
         { title: "Consistent Quality", desc: "Every batch is cold-processed with fixed formulas — the bar your customer buys today will match the one they buy next season." },
         { title: "Cruelty-Free Certified", desc: "Never tested on animals. Sensitive-skin approved. Icons on all packaging." }
@@ -80,7 +94,7 @@ export const translations = {
       required: "Required"
     },
     footer: {
-      tagline: "Handcrafted goat's milk soap. Made in North America. Shipped worldwide.",
+      tagline: "Handcrafted goat's milk soap. Made in the USA. Shipped worldwide.",
       address: "Rouyn-Noranda, QC J9Y 1A8, Canada",
       email: "info@nuprozone.com",
       rights: "All rights reserved.",
@@ -97,7 +111,7 @@ export const translations = {
       lang: "EN"
     },
     hero: {
-      eyebrow: "Artisanal en Amérique du Nord",
+      eyebrow: "Fabriqué artisanalement aux États-Unis",
       headline: "Savon au Lait de Chèvre Pur",
       subhead: "Disponible en Gros et à l'Export",
       body: "Savons artisanaux haut de gamme fabriqués avec du lait de chèvre frais, des huiles biologiques et des huiles essentielles pures. Disponibles en vrac pour les détaillants, spas et marques de bien-être dans le monde entier.",
@@ -113,7 +127,7 @@ export const translations = {
     about: {
       eyebrow: "Notre Histoire",
       headline: "Fabriqué avec soin. Formulé pour la peau.",
-      body1: "Le savon au lait de chèvre NUPROZ est fabriqué à la main en Amérique du Nord avec du lait de chèvre frais. Chaque barre est élaborée à froid, riche en graisses nourrissantes, acides lactiques et vitamines qui nettoient en douceur.",
+      body1: "Le savon au lait de chèvre NUPROZ est fabriqué à la main aux États-Unis avec du lait de chèvre frais. Chaque barre est élaborée à froid, riche en graisses nourrissantes, acides lactiques et vitamines qui nettoient en douceur.",
       body2: "Nous approvisionnons les acheteurs en gros qui exigent une qualité que leurs clients peuvent ressentir — spas, détaillants de santé naturelle, boutiques de cadeaux et marques de bien-être à travers l'Amérique du Nord et au-delà.",
       stat1: "100%",
       stat1label: "Ingrédients Naturels",
@@ -137,15 +151,29 @@ export const translations = {
     products: {
       eyebrow: "Gamme de Produits",
       headline: "SKUs Actuels — Catalogue Grossiste",
-      body: "Prix, MOQs et options d'étiquette personnalisée disponibles sur demande. Nouvelles variantes ajoutées chaque saison.",
-      coming: "Catalogue produit complet avec tarifs disponible sur demande — incluant les options d'étiquette privée.",
-      cta: "Demander le Catalogue"
+      body: "Prix et MOQs disponibles sur demande. Nouvelles variantes ajoutées chaque saison.",
+      coming: "Catalogue produit complet avec tarifs disponible sur demande.",
+      cta: "Demander le Catalogue",
+      specs: {
+        format: "Format",
+        formatVal: "Barre 4 oz · 113g",
+        process: "Procédé",
+        processVal: "À froid",
+        origin: "Origine",
+        originVal: "États-Unis",
+        label: "Marque",
+        labelVal: "Marque NUPROZ",
+        certifications: "Certifications",
+        certificationsVal: "Sans cruauté · Peau sensible",
+        pricing: "Tarification",
+        pricingVal: "Disponible sur demande"
+      }
     },
     why: {
       eyebrow: "Pourquoi NUPROZ",
       headline: "Conçu pour les acheteurs qui se soucient de ce qu'ils vendent.",
       items: [
-        { title: "Étiquette Privée", desc: "Étiquetage personnalisé disponible pour les détaillants et marques spa." },
+        { title: "Marque NUPROZ", desc: "Tous les produits sont expédiés sous la marque NUPROZ — un nom fondé sur la qualité, le soin et des ingrédients purs." },
         { title: "Emballage Export", desc: "Barres emballées individuellement et conformes à l'export pour l'Amérique du Nord et les marchés internationaux." },
         { title: "Qualité Constante", desc: "Chaque lot est traité à froid avec des formules fixes — la barre achetée aujourd'hui correspondra à celle de la prochaine saison." },
         { title: "Certifié Sans Cruauté", desc: "Jamais testé sur les animaux. Approuvé peau sensible. Icônes sur tous les emballages." }
@@ -168,7 +196,7 @@ export const translations = {
       required: "Requis"
     },
     footer: {
-      tagline: "Savon artisanal au lait de chèvre. Fabriqué en Amérique du Nord. Expédié dans le monde entier.",
+      tagline: "Savon artisanal au lait de chèvre. Fabriqué aux États-Unis. Expédié dans le monde entier.",
       address: "Rouyn-Noranda, QC J9Y 1A8, Canada",
       email: "info@nuprozone.com",
       rights: "Tous droits réservés.",
