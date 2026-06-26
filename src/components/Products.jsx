@@ -1,7 +1,6 @@
 import './Products.css'
 
 export default function Products({ t }) {
-  // Gallery of soap bars to display
   const gallery = [
     { src: '/soap-bar-hero.webp',   alt: 'Marigold & Oat bar' },
     { src: '/soap-rosemary.webp',   alt: 'Charcoal & Rosemary bars' },
@@ -10,6 +9,8 @@ export default function Products({ t }) {
     { src: '/soap-green.webp',      alt: 'Green clay bar' },
     { src: '/soap-floral.webp',     alt: 'Honey floral bar' },
   ]
+
+  const { specs } = t.products
 
   return (
     <section className="section products" id="products">
@@ -21,7 +22,6 @@ export default function Products({ t }) {
         </div>
 
         <div className="products__layout">
-          {/* Left: image gallery grid */}
           <div className="products__gallery">
             {gallery.map((img, i) => (
               <div key={i} className={`products__gallery-item products__gallery-item--${i}`}>
@@ -30,7 +30,6 @@ export default function Products({ t }) {
             ))}
           </div>
 
-          {/* Right: info panel */}
           <div className="products__info">
             <div className="products__coming">
               <div className="products__coming-icon">
@@ -45,28 +44,28 @@ export default function Products({ t }) {
 
             <div className="products__details">
               <div className="products__detail-row">
-                <span>Format</span>
-                <span>4 oz bar · 113g</span>
+                <span>{specs.format}</span>
+                <span>{specs.formatVal}</span>
               </div>
               <div className="products__detail-row">
-                <span>Process</span>
-                <span>Cold-process</span>
+                <span>{specs.process}</span>
+                <span>{specs.processVal}</span>
               </div>
               <div className="products__detail-row">
-                <span>Origin</span>
-                <span>North America</span>
+                <span>{specs.origin}</span>
+                <span>{specs.originVal}</span>
               </div>
               <div className="products__detail-row">
-                <span>Label</span>
-                <span>Custom available</span>
+                <span>{specs.label}</span>
+                <span>{specs.labelVal}</span>
               </div>
               <div className="products__detail-row">
-                <span>Certifications</span>
-                <span>Cruelty-free · Sensitive skin</span>
+                <span>{specs.certifications}</span>
+                <span>{specs.certificationsVal}</span>
               </div>
               <div className="products__detail-row">
-                <span>Pricing</span>
-                <span>Available upon inquiry</span>
+                <span>{specs.pricing}</span>
+                <span>{specs.pricingVal}</span>
               </div>
             </div>
             <a href="#contact" className="btn btn-primary products__cta">{t.products.cta}</a>
