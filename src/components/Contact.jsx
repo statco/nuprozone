@@ -3,7 +3,7 @@ import './Contact.css'
 
 const FORMSPREE_ID = 'xwvdolgq'
 const EMAILJS_SERVICE  = 'service_hge1p5o'
-const EMAILJS_TEMPLATE = 'template_yjfznth'
+const EMAILJS_TEMPLATE = 'template_aj0bk97'
 const EMAILJS_KEY      = '8p2cXHkz3QY_aj81x'
 
 export default function Contact({ t, lang }) {
