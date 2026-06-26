@@ -16,48 +16,50 @@ export default function Contact({ t, lang }) {
 
   const set = (k) => (e) => setForm(f => ({ ...f, [k]: e.target.value }))
 
-  const sendConfirmation = async (formData) => {
+  const buildConfirmationHTML = (f, isFR) => {
+    const greeting     = isFR ? `Bonjour ${f.name},`        : `Hi ${f.name},`
+    const line1        = isFR
+      ? `Merci de nous avoir contacté. Nous avons bien reçu votre demande de la part de <strong>${f.company}</strong> (${f.country}) et vous répondrons dans <strong>1 à 2 jours ouvrables</strong> avec les tarifs, les MOQs et les détails du catalogue.`
+      : `Thank you for reaching out to NUPROZ. We have received your wholesale inquiry from <strong>${f.company}</strong> (${f.country}) and will respond within <strong>1–2 business days</strong> with pricing, MOQs, and catalogue details.`
+    const lbl_product  = isFR ? `Produit d'intérêt`   : `Product interest`
+    const lbl_volume   = isFR ? `Volume estimé`        : `Estimated volume`
+    const lbl_msg      = isFR ? `Votre message`        : `Your message`
+    const reply_note   = isFR
+      ? `Vous pouvez répondre directement à cet email pour toute question.`
+      : `Feel free to reply directly to this email with any questions.`
+    const sign_off     = isFR ? `L'équipe NUPROZ`      : `The NUPROZ Team`
+
+    return `
+<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;color:#3D3530;">
+  <div style="background:#2C3B2D;padding:24px 32px;">
+    <span style="font-family:Georgia,serif;font-size:22px;color:#ffffff;letter-spacing:0.12em;">NUPROZ</span>
+    <span style="font-size:13px;color:rgba(255,255,255,0.6);margin-left:12px;">Wholesale</span>
+  </div>
+  <div style="padding:32px;background:#ffffff;border:1px solid #EDE8DC;">
+    <p style="font-size:16px;margin:0 0 20px;">${greeting}</p>
+    <p style="font-size:15px;line-height:1.7;margin:0 0 24px;">${line1}</p>
+    <div style="background:#F9F5EE;border-left:3px solid #E8651A;padding:16px 20px;margin:0 0 24px;border-radius:0 4px 4px 0;">
+      <table style="width:100%;border-collapse:collapse;font-size:14px;">
+        <tr><td style="padding:6px 0;color:#7A6F65;text-transform:uppercase;font-size:11px;letter-spacing:0.08em;width:40%;">${lbl_product}</td><td style="padding:6px 0;font-weight:600;">${f.productInterest || '—'}</td></tr>
+        <tr><td style="padding:6px 0;color:#7A6F65;text-transform:uppercase;font-size:11px;letter-spacing:0.08em;">${lbl_volume}</td><td style="padding:6px 0;font-weight:600;">${f.volume || '—'}</td></tr>
+        ${f.message ? `<tr><td style="padding:6px 0;color:#7A6F65;text-transform:uppercase;font-size:11px;letter-spacing:0.08em;vertical-align:top;">${lbl_msg}</td><td style="padding:6px 0;">${f.message}</td></tr>` : ''}
+      </table>
+    </div>
+    <p style="font-size:14px;color:#7A6F65;margin:0 0 28px;">${reply_note}</p>
+    <p style="font-size:15px;margin:0;">— ${sign_off}<br>
+      <a href="mailto:info@groupecomint.com" style="color:#E8651A;">info@groupecomint.com</a><br>
+      <a href="https://nuprozone.com" style="color:#E8651A;">nuprozone.com</a>
+    </p>
+  </div>
+  <div style="background:#2C3B2D;padding:12px 32px;font-size:11px;color:rgba(255,255,255,0.4);text-align:center;">
+    © ${new Date().getFullYear()} NUPROZ · nuprozone.com
+  </div>
+</div>`
+  }
+
+  const sendConfirmation = async (f) => {
     try {
       const isFR = lang === 'fr'
-      const templateParams = {
-        to_name:    formData.name,
-        to_email:   formData.email,
-        company:    formData.company,
-        country:    formData.country,
-        volume:     formData.volume,
-        product:    formData.productInterest,
-        message:    formData.message,
-        // Bilingual content passed to template
-        subject:    isFR
-          ? `Votre demande NUPROZ a bien été reçue`
-          : `Your NUPROZ Wholesale Inquiry has been received`,
-        greeting:   isFF => isFF
-          ? `Bonjour ${formData.name},`
-          : `Hi ${formData.name},`,
-        body_line1: isFF => isFF
-          ? `Merci de nous avoir contacté. Nous avons bien reçu votre demande de la part de ${formData.company} et vous répondrons dans 1 à 2 jours ouvrables avec les tarifs, les MOQs et les détails du catalogue.`
-          : `Thank you for reaching out. We have received your wholesale inquiry from ${formData.company} and will respond within 1–2 business days with pricing, MOQs, and catalogue details.`,
-        label_product: isFF => isFF ? `Produit d'intérêt` : `Product interest`,
-        label_volume:  isFF => isFF ? `Volume estimé` : `Estimated volume`,
-        label_country: isFF => isFF ? `Pays` : `Country`,
-        reply_note: isFF => isFF
-          ? `Vous pouvez répondre directement à cet email pour toute question.`
-          : `You can reply directly to this email with any questions.`,
-        sign_off: `— The NUPROZ Team\ninfo@groupecomint.com\nnuprozone.com`,
-        // Simple flat versions for basic templates
-        greeting_text:   isFF => isFF ? `Bonjour ${formData.name},` : `Hi ${formData.name},`,
-        confirmation_en: `Thank you for your wholesale inquiry. We received your request from ${formData.company} (${formData.country}) and will be in touch within 1–2 business days with pricing and catalogue details.\n\nProduct interest: ${formData.productInterest}\nEstimated volume: ${formData.volume}\n\n— The NUPROZ Team\ninfo@groupecomint.com | nuprozone.com`,
-        confirmation_fr: `Merci pour votre demande grossiste. Nous avons reçu votre demande de ${formData.company} (${formData.country}) et vous répondrons dans 1 à 2 jours ouvrables avec les tarifs et le catalogue.\n\nProduit d'intérêt: ${formData.productInterest}\nVolume estimé: ${formData.volume}\n\n— L'équipe NUPROZ\ninfo@groupecomint.com | nuprozone.com`,
-        message_body: isFF
-          ? `Merci pour votre demande grossiste. Nous avons reçu votre demande de ${formData.company} (${formData.country}) et vous répondrons dans 1 à 2 jours ouvrables avec les tarifs et le catalogue.\n\nProduit d\u2019intérêt: ${formData.productInterest}\nVolume estimé: ${formData.volume}${formData.message ? '\n\nMessage: ' + formData.message : ''}\n\n— L\u2019équipe NUPROZ\ninfo@groupecomint.com | nuprozone.com`
-          : `Thank you for your wholesale inquiry. We received your request from ${formData.company} (${formData.country}) and will be in touch within 1–2 business days with pricing and catalogue details.\n\nProduct interest: ${formData.productInterest}\nEstimated volume: ${formData.volume}${formData.message ? '\n\nMessage: ' + formData.message : ''}\n\n— The NUPROZ Team\ninfo@groupecomint.com | nuprozone.com`,
-        reply_to: 'info@groupecomint.com',
-        from_name: 'NUPROZ Wholesale',
-      }
-
-      // Use true/false for isFF since we already have isFF as variable
-      const isFF = isFF => isFF
-
       await fetch('https://api.emailjs.com/api/v1.0/email/send', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -66,21 +68,18 @@ export default function Contact({ t, lang }) {
           template_id: EMAILJS_TEMPLATE,
           user_id:     EMAILJS_KEY,
           template_params: {
-            to_name:      formData.name,
-            to_email:     formData.email,
+            to_name:      f.name,
+            to_email:     f.email,
             from_name:    'NUPROZ Wholesale',
             reply_to:     'info@groupecomint.com',
-            subject:      lang === 'fr'
-              ? 'Votre demande NUPROZ a bien été reçue'
-              : 'Your NUPROZ Wholesale Inquiry has been received',
-            message_body: lang === 'fr'
-              ? `Bonjour ${formData.name},\n\nMerci de nous avoir contacté. Nous avons bien reçu votre demande de la part de ${formData.company} (${formData.country}) et vous répondrons dans 1 à 2 jours ouvrables avec les tarifs, les MOQs et les détails du catalogue.\n\nProduit d\u2019intérêt\u00a0: ${formData.productInterest}\nVolume estimé\u00a0: ${formData.volume}${formData.message ? '\n\nVotre message\u00a0: ' + formData.message : ''}\n\nVous pouvez répondre directement à cet email pour toute question.\n\n— L\u2019équipe NUPROZ\ninfo@groupecomint.com\nnuprozone.com`
-              : `Hi ${formData.name},\n\nThank you for reaching out to NUPROZ. We have received your wholesale inquiry from ${formData.company} (${formData.country}) and will respond within 1–2 business days with pricing, MOQs, and catalogue details.\n\nProduct interest: ${formData.productInterest}\nEstimated volume: ${formData.volume}${formData.message ? '\n\nYour message: ' + formData.message : ''}\n\nFeel free to reply directly to this email with any questions.\n\n— The NUPROZ Team\ninfo@groupecomint.com\nnuprozone.com`,
+            subject:      isFR
+              ? `Votre demande NUPROZ a bien été reçue — ${f.company}`
+              : `Your NUPROZ Wholesale Inquiry has been received — ${f.company}`,
+            message_body: buildConfirmationHTML(f, isFR),
           }
         })
       })
     } catch (err) {
-      // Confirmation email failure is non-blocking — form still succeeds
       console.warn('Confirmation email failed:', err)
     }
   }
@@ -100,7 +99,6 @@ export default function Contact({ t, lang }) {
         })
       })
       if (res.ok) {
-        // Send buyer confirmation via EmailJS (non-blocking)
         await sendConfirmation(form)
         setStatus('success')
         setForm({ name:'', company:'', email:'', phone:'', country:'', volume:'', productInterest:'', heardAbout:'', message:'' })
@@ -115,7 +113,6 @@ export default function Contact({ t, lang }) {
   return (
     <section className="section contact" id="contact">
       <div className="container contact__grid">
-
         <div className="contact__info">
           <p className="eyebrow">{t.contact.eyebrow}</p>
           <h2 className="section-headline">{t.contact.headline}</h2>
@@ -214,16 +211,9 @@ export default function Contact({ t, lang }) {
               </div>
               <div className="form-field">
                 <label>{t.contact.message}</label>
-                <textarea
-                  value={form.message}
-                  onChange={set('message')}
-                  placeholder={t.contact.messagePlaceholder}
-                  rows={4}
-                />
+                <textarea value={form.message} onChange={set('message')} placeholder={t.contact.messagePlaceholder} rows={4} />
               </div>
-              {status === 'error' && (
-                <p className="contact__error">{t.contact.error}</p>
-              )}
+              {status === 'error' && <p className="contact__error">{t.contact.error}</p>}
               <button type="submit" className="btn btn-primary contact__submit" disabled={status === 'loading'}>
                 {status === 'loading' ? <span className="contact__spinner" /> : t.contact.submit}
               </button>
