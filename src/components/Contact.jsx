@@ -40,8 +40,8 @@ export default function Contact({ t, lang }) {
     <p style="font-size:15px;line-height:1.7;margin:0 0 24px;">${line1}</p>
     <div style="background:#F9F5EE;border-left:3px solid #E8651A;padding:16px 20px;margin:0 0 24px;border-radius:0 4px 4px 0;">
       <table style="width:100%;border-collapse:collapse;font-size:14px;">
-        <tr><td style="padding:6px 0;color:#7A6F65;text-transform:uppercase;font-size:11px;letter-spacing:0.08em;width:40%;">${lbl_product}</td><td style="padding:6px 0;font-weight:600;">${f.productInterest || '—'}</td></tr>
-        <tr><td style="padding:6px 0;color:#7A6F65;text-transform:uppercase;font-size:11px;letter-spacing:0.08em;">${lbl_volume}</td><td style="padding:6px 0;font-weight:600;">${f.volume || '—'}</td></tr>
+        <tr><td style="padding:6px 0;color:#7A6F65;text-transform:uppercase;font-size:11px;letter-spacing:0.08em;width:40%;">${lbl_product}</td><td style="padding:6px 0;font-weight:600;">${getLabel(t.contact.productOptions, f.productInterest) || '—'}</td></tr>
+        <tr><td style="padding:6px 0;color:#7A6F65;text-transform:uppercase;font-size:11px;letter-spacing:0.08em;">${lbl_volume}</td><td style="padding:6px 0;font-weight:600;">${getLabel(t.contact.volumeOptions, f.volume) || '—'}</td></tr>
         ${f.message ? `<tr><td style="padding:6px 0;color:#7A6F65;text-transform:uppercase;font-size:11px;letter-spacing:0.08em;vertical-align:top;">${lbl_msg}</td><td style="padding:6px 0;">${f.message}</td></tr>` : ''}
       </table>
     </div>
@@ -55,6 +55,12 @@ export default function Contact({ t, lang }) {
     © ${new Date().getFullYear()} NUPROZ · nuprozone.com
   </div>
 </div>`
+  }
+
+  // Helper to get display label from value
+  const getLabel = (options, value) => {
+    const opt = options.find(o => o.value === value)
+    return opt ? opt.label : value
   }
 
   const sendConfirmation = async (f) => {
